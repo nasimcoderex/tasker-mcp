@@ -1,0 +1,11 @@
+{
+  "servers": {
+    "creatorlms": {
+      "command": "node",
+      "args": ["index.js"],
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+      }
+    }
+  }
+}

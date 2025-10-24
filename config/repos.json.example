@@ -1,0 +1,19 @@
+{
+  "repositories": [
+    {
+      "name": "my-frontend",
+      "repo": "owner/frontend-app",
+      "defaultBranch": "main"
+    },
+    {
+      "name": "my-backend", 
+      "repo": "owner/backend-api",
+      "defaultBranch": "develop"
+    },
+    {
+      "name": "my-docs",
+      "repo": "owner/documentation",
+      "defaultBranch": "main"
+    }
+  ]
+}

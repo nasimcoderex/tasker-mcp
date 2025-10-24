@@ -1,0 +1,16 @@
+{
+  "name": "linno-mcp",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test-server.js",
+    "dev": "echo '✅ Testing server...' && node test-server.js && echo '💡 Remember to restart Claude Desktop to see changes!'"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.20.1",
+    "dotenv": "^17.2.3",
+    "node-fetch": "^3.3.1",
+    "octokit": "^2.0.0"
+  }
+}
