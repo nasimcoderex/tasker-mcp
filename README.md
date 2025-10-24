@@ -13,6 +13,7 @@ A configurable Model Context Protocol (MCP) server that provides GitHub API inte
 - **🆕 Company Documentation Integration** - Enforces company rules and best practices
 - **🆕 Automatic Validation** - Validates branch names, PR formats according to your guidelines
 - **🆕 Smart Documentation Search** - Find specific rules and guidelines quickly
+- **🆕 Trello Task Management** - Create cards, manage boards and track tasks
 
 ## 📋 Available Actions
 
@@ -35,6 +36,17 @@ A configurable Model Context Protocol (MCP) server that provides GitHub API inte
 | `search` | Search through documentation for specific terms |
 | `rules` | Get company rules for specific categories |
 | `guidelines` | Get action-specific guidelines |
+
+### Trello Actions
+| Action | Description |
+|--------|-------------|
+| `list_boards` | Show all available Trello boards |
+| `list_lists` | Show all lists in a specific board |
+| `create_card` | Create a new task card in Trello |
+| `list_cards` | Show all cards in a specific list |
+| `update_card` | Update an existing card |
+| `move_card` | Move a card between lists |
+| `add_comment` | Add a comment to a card |
 
 ## ⚙️ Configuration
 
@@ -78,7 +90,9 @@ Edit `config/repos.json`:
 }
 ```
 
-## 🔑 GitHub Token Setup
+## 🔑 API Setup
+
+### GitHub Token Setup
 
 1. Generate a Personal Access Token:
    - Go to GitHub → Settings → Developer settings → Personal access tokens
@@ -89,6 +103,20 @@ Edit `config/repos.json`:
 export GITHUB_TOKEN="your_github_token_here"
 ```
 
+### Trello API Setup (Optional)
+
+1. Get your Trello API credentials:
+   - Go to https://trello.com/power-ups/admin
+   - Generate API Key and Token
+
+2. Set environment variables:
+```bash
+export TRELLO_API_KEY="your_trello_api_key"
+export TRELLO_TOKEN="your_trello_token"
+export TRELLO_BOARD_ID="your_default_board_id"  # Optional
+export TRELLO_LIST_ID="your_default_list_id"    # Optional
+```
+
 ## 🏃‍♂️ Running the Server
 
 ```bash
@@ -97,6 +125,10 @@ npm install
 
 # Set your GitHub token
 export GITHUB_TOKEN="your_token_here"
+
+# Optional: Set Trello credentials
+export TRELLO_API_KEY="your_trello_api_key"
+export TRELLO_TOKEN="your_trello_token"
 
 # Optional: Set custom repositories
 export GITHUB_REPOS='[{"name":"my-repo","repo":"owner/repo","defaultBranch":"main"}]'
@@ -119,7 +151,9 @@ Add to your Claude Desktop `config.json`:
       "args": ["/path/to/your/github-mcp/index.js"],
       "env": {
         "GITHUB_TOKEN": "your_github_token_here",
-        "GITHUB_REPOS": "[{\"name\":\"my-repo\",\"repo\":\"owner/repo\",\"defaultBranch\":\"main\"}]"
+        "GITHUB_REPOS": "[{\"name\":\"my-repo\",\"repo\":\"owner/repo\",\"defaultBranch\":\"main\"}]",
+        "TRELLO_API_KEY": "your_trello_api_key",
+        "TRELLO_TOKEN": "your_trello_token"
       }
     }
   }
@@ -160,6 +194,23 @@ Add to your Claude Desktop `config.json`:
 {
   "repoName": "my-frontend",
   "action": "list_prs"
+}
+```
+
+### Create Trello Task
+```json
+{
+  "action": "create_card",
+  "title": "Implement new feature",
+  "description": "Add authentication to the login page",
+  "listId": "your_list_id"
+}
+```
+
+### List Trello Boards
+```json
+{
+  "action": "list_boards"
 }
 ```
 
