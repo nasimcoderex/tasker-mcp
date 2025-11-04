@@ -37,7 +37,7 @@ function loadRepositories() {
       {
         name: "example-repo",
         repo: "owner/repository", 
-        defaultBranch: "main"
+        defaultBranch: "develop"
       }
     ];
   } catch (error) {
@@ -47,7 +47,7 @@ function loadRepositories() {
       {
         name: "example-repo", 
         repo: "owner/repository",
-        defaultBranch: "main"
+        defaultBranch: "develop"
       }
     ];
   }

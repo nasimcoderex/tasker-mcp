@@ -41,7 +41,8 @@ export class GithubTool {
           return await this.listPullRequests(owner, repo);
         
         case 'get_file':
-          return await this.getFileContent(owner, repo, taskDescription, targetRepo.defaultBranch); // taskDescription as filepath
+            // Use taskBranch if provided, otherwise use defaultBranch
+            return await this.getFileContent(owner, repo, taskDescription, taskBranch); // taskDescription as filepath
         
         case 'update_file':
           return await this.updateFile(owner, repo, taskDescription, branchName); // taskDescription as file update info
